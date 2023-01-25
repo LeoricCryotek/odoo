@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="website_pdf_preview.pdf_js" model="ir.asset">
+        <field name="name">website product catalogue pdf</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_pdf_preview/static/src/js/pdf.js</field>
+    </record>
+
+    <record id="website_pdf_preview.pdf_viewer_js" model="ir.asset">
+        <field name="name">website product catalogue pdf viewer</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_pdf_preview/static/src/js/pdf_viewer.js</field>
+    </record>
+
+    <record id="website_pdf_preview.website_pdf_preview_js" model="ir.asset">
+        <field name="name">website product catalogue pdf preview</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_pdf_preview/static/src/js/website_pdf_preview.js</field>
+    </record>
+
+    <record id="website_pdf_preview.pdf_review_css" model="ir.asset">
+        <field name="name">website product catalogue pdf review css</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_pdf_preview/static/src/css/pdf_review.css</field>
+    </record>
+
+</odoo>

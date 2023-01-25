@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+
+    <t t-name="documents_portal_management.kanban_ribbon">
+        <div class="kanban_ribbon down">
+            <div t-attf-class="content #{widget.classBgColor}">
+                <span t-attf-class="fa #{widget.icon}"/>
+                <span t-attf-class="#{widget.classText}" t-esc="widget.text"/>
+            </div>            
+        </div>
+    </t>
+
+</template>

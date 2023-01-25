@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="inherited_view_website_form" model="ir.ui.view">
+            <field name="name">website.form</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="model">website</field>
+            <field name="arch" type="xml">
+                <sheet position="before">
+                    <header>
+                        <button name="set_visibility_connected_for_all_pages" type="object" string="Set all pages visibility to signed-in"
+                            confirm="Are you sure? All pages visibility setting will be overwritten with 'Signed In'."/>
+                        <button name="set_visibility_all_for_all_pages" type="object" string="Set all pages visibility to All"
+                            confirm="Are you sure? All pages visibility setting will be overwritten with 'All'."/>
+                            
+                    </header>
+                </sheet>
+            </field>
+        </record>
+
+    </data>
+</odoo>

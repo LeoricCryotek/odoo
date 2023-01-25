@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_saleorder_document_inherit_gl_code" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div t-if="doc.gl_code" class="col-auto col-3 mw-100 mb-2">
+                <strong>GL Code:</strong>
+                <p class="m-0" t-field="doc.gl_code"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_invoice_document_inherit_gl_code" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='reference']" position="after">
+            <div class="col-auto mw-100 mb-2" t-if="o.gl_code" name="gl_code">
+                <strong>GL Code:</strong>
+                <p class="m-0" t-field="o.gl_code"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

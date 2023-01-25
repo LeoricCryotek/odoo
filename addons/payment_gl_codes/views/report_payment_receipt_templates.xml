@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_receipt_document_inherit_gl_code" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[@t-if='o.payment_method_id']" position="inside">
+            <t t-if="o.gl_code">
+                <br/>GL Code: <span t-field="o.gl_code"/>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
