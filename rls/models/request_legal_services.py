@@ -22,6 +22,7 @@ class RequestLegalServices(models.Model):
 #    requested_due_date = datetime
 #    completed_date = datetime
 #    attorney_assigned = fields.Selection()
-#    outside_council_assigned = fields.Selection()
+#    outside_council = fields.Selection()
+    outside_council_assigned = fields.Boolean(String="Assigned to Outside Council?")
 
 
