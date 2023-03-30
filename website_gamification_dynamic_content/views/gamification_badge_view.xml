@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="gamification_badge_form_view" model="ir.ui.view">
+        <field name="name">gamification.badge.form.view</field>
+        <field name="model">gamification.badge</field>
+        <field name="arch" type="xml">
+            <form string="Badge">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gamification_badge_tree_view" model="ir.ui.view">
+        <field name="name">gamification.badge.tree.view</field>
+        <field name="model">gamification.badge</field>
+        <field name="arch" type="xml">
+            <tree string="Badges">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

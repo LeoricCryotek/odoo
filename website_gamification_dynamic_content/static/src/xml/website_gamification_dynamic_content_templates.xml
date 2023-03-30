@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="website_gamification_dynamic_content.badges">
+        <div class="s_badges" data-selector=".s_badges" data-name="Badges">
+            <div class="container">
+                <div class="row">
+                    <!-- Add the badges template structure here -->
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

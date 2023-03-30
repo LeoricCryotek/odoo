@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="rls_menu_root"
+              name="Legal Services"
+              web_icon="static/description/icon.png"
+              sequence="10">
+        <menuitem id="menu_rls_main"
+                  name="Legal Services"
+                  action="rls_action"
+                  sequence="10">
+        </menuitem>
+    </menuitem>
+
+<record id="rls_action" model="ir.actions.act_window">
+    <field name="name">Dashboard</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">legal.requests</field>
+    <field name="view_mode">list</field>
+    <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Requests for Legal Services yet!
+            </p>
+    </field>
+</record>
+
+
+</odoo>
