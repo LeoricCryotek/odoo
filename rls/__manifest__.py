@@ -6,6 +6,7 @@
     'version': '1.2',
     'author': 'Danny Santiago',
     'category': 'Productivity/legal',
+    'website':'https://home.cityoflewiston.org',
     'sequence': 15,
     'license': 'LGPL-3',
     'summary': 'Track request for legal services and their status. ',
@@ -23,12 +24,11 @@
         'phone_validation',
     ],
     'data': [
-        'views/requests.xml'
+        'security/ir.model.access.csv',
+        'views/menu.xml',
+        'views/requests.xml',
     ],
     'demo': [
-#        'data/crm_team_demo.xml',
-#        'data/mail_activity_demo.xml',
-#        'data/crm_lead_demo.xml',
     ],
     'installable': True,
     'application': True,

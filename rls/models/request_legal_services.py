@@ -5,12 +5,12 @@ class RequestLegalServices(models.Model):
     _name = "legal.requests"
     _description = "Legal Requests"
 
-    task_name = fields.Char(string="Account Name", required=True, index='trigram', tracking=True)
+    task_name = fields.Char(string="RLS Name", required=True,)
 #    rls = fields.Interger()
 #    due_date = datetime(required=True,)
 #    days_until_due = fields()
 #    priority =  fields.Selection()
-    notes = fields.Text(string='Description')
+#    notes = fields.Text(string='Description')
 #    reminder = fields.Selection()
 #    requested by = field.Char(related="res.partner", required=True,)
 #    department = resu_user.department(required=True,)
@@ -23,6 +23,6 @@ class RequestLegalServices(models.Model):
 #    completed_date = datetime
 #    attorney_assigned = fields.Selection()
 #    outside_council = fields.Selection()
-    outside_council_assigned = fields.Boolean(String="Assigned to Outside Council?")
+#    outside_council_assigned = fields.Boolean(String="Assigned to Outside Council?")
 
 

@@ -1,66 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
- <menuitem name="Legal Request"
-        id="website_rls_menu_root"
-        web_icon="rls,static/description/icon.png"
-        action=""
-        sequence="100"/>
+    <menuitem
+            id="website_rls_root"
+            name="Legal Requests"
+            web_icon="static/description/icon.png"
+            sequence="20"/>
 
-    <!-- Main top menu elements -->
-    <menuitem name="Dashboard"
-        id="website_rls_menu_dashboard"
-        parent="website_rls_menu_root"
-        action=""
-        sequence="1"/>
-       <menuitem name="Requests"
-        id="website_rls_menu_requests"
-        parent="website_rls_menu_root"
-        sequence="9"/>
-    <menuitem name="Reporting"
-        id="website_rls_menu_report"
-        parent="website_rls_menu_root"
-        sequence="40"/>
-    <menuitem name="Configuration"
-        id="website_rls_menu_configuration"
-        parent="website_rls_menu_root"
-        sequence="99"/>
+    <!-- Main Requests menu  -->
+    <menuitem
+            id="website_rls_menu_requests"
+            name="Requests"
+            parent="website_rls_root"
+            sequence="2"/>
 
-    <!-- Requests sub-menu -->
-    <menuitem name="Requests"
-        id="website_rls_menu_request_requests"
-        parent="website_rls_menu_requests"
-        sequence="1"
-        action=""/>
+    <!-- Main Reporting menu  -->
+    <menuitem
+            id="website_rls_menu_report"
+            name="Reporting"
+            parent="website_rls_root"
+            sequence="3"/>
+    <menuitem
+            id="website_rls_menu_report_requests"
+            name="Reports"
+            parent="website_rls_menu_report"
+            sequence="1"
+            action=""/>
+    <menuitem
+            id="website_rls_menu_request_reviews"
+            name="Reviews"
+            parent="website_rls_menu_report"
+            sequence="2"
+            action=""/>
 
-    <!-- Reporting sub-menu -->
-    <menuitem name="Reports"
-        id="website_rls_menu_report_requests"
-        parent="website_rls_menu_report"
-        sequence="1"
-        action=""/>
-    <menuitem name="Reviews"
-        id="website_rls_menu_request_reviews"
-        parent="website_rls_menu_report"
-        sequence="10"
-        action=""/>
 
-    <!-- Settings sub-menu -->
-    <menuitem name="Legal Team"
-        id="website_rls_menu_config_legal_team"
-        parent="website_rls_menu_configuration"
-        sequence="1"
-        action=""
-        groups="base.group_system"/>
-    <menuitem name="Outside Council"
-        id="website_rls_menu_config_outside_council"
-        parent="website_rls_menu_configuration"
-        sequence="2"
-        action=""/>
-    <menuitem name="Request Types"
-        id="website_rls_menu_config_request_type"
-        parent="website_rls_menu_configuration"
-        sequence="3"
-        action=""/>
+    <!-- Main Configuration menu  -->
+    <menuitem
+            name="Configuration"
+            id="website_rls_menu_configuration"
+            parent="website_rls_root"
+            sequence="5"/>
+    <menuitem
+            id="website_rls_menu_config_legal_team"
+            name="Legal Team"
+            parent="website_rls_menu_configuration"
+            sequence="1"
+            action=""
+            groups=""/>
+    <menuitem
+            id="website_rls_menu_config_outside_council"
+            name="Outside Council"
+            parent="website_rls_menu_configuration"
+            sequence="2"
+            action=""/>
+    <menuitem
+            id="website_rls_menu_config_request_type"
+            name="Request Types"
+            parent="website_rls_menu_configuration"
+            sequence="3"
+            action=""/>
 
 
 </odoo>

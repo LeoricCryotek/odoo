@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="rls_menu_root"
-              name="Legal Services"
-              web_icon="static/description/icon.png"
-              sequence="10">
-        <menuitem id="menu_rls_main"
-                  name="Legal Services"
-                  action="rls_action"
-                  sequence="10">
-        </menuitem>
-    </menuitem>
 
-<record id="rls_action" model="ir.actions.act_window">
-    <field name="name">Dashboard</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="res_model">legal.requests</field>
-    <field name="view_mode">list</field>
-    <field name="help" type="html">
+    <record id="view_account_reconcile_model_line_form" model="ir.ui.view">
+    <field name="name">legal.requests.kanban</field>
+    <field name="model">legal.requests</field>
+    <field name="arch" type="xml">
+    <kanban>
+
+    </kanban>
+    </field>
+    </record>
+    <record id="view_account_reconcile_model_line_form" model="ir.ui.view">
+    <field name="name">legal.requests.form</field>
+    <field name="model">legal.requests</field>
+    <field name="arch" type="xml">
+    <form>
+        <field name="task_name"/>
+
+    </form>
+    </field>
+    </record>
+    <record id="view_account_reconcile_model_line_tree" model="ir.ui.view">
+    <field name="name">legal.requests.tree</field>
+    <field name="model">legal.requests</field>
+    <field name="arch" type="xml">
+    <tree>
+
+    </tree>
+    </field>
+    </record>
+    <record id="rls_action" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">legal.requests</field>
+        <field name="view_mode">kanban,tree,list,form,activity</field>
+        <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No Requests for Legal Services yet!
             </p>
-    </field>
-</record>
-
+        </field>
+    </record>
+    <!-- Main Dashboard menu  -->
+    <menuitem
+            id="website_rls_dashboard"
+            name="Dashboard"
+            parent="website_rls_root"
+            action="rls_action"
+            sequence="1"/>
 
 </odoo>
