@@ -5,7 +5,7 @@
     'name': 'Request for Legal Services',
     'version': '1.2',
     'author': 'Danny Santiago',
-    'category': 'Productivity/legal',
+    'category': 'Services/Legal',
     'website':'https://home.cityoflewiston.org',
     'sequence': 15,
     'license': 'LGPL-3',
