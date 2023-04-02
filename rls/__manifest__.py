@@ -31,8 +31,6 @@
         'views/rls_dashboard.xml',
         'views/res_config_settings_views.xml',
     ],
-    'demo': [
-    ],
     'installable': True,
     'application': True,
     'auto_install': False
