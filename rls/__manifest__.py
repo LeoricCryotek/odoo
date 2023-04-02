@@ -26,7 +26,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
+        'views/actions.xml',
         'views/requests.xml',
+        'views/rls_dashboard.xml',
+        'views/res_config_settings_views.xml',
     ],
     'demo': [
     ],

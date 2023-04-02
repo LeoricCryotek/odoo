@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_dashboard" model="ir.ui.view">
+        <field name="name">rls.dashboard.view</field>
+        <field name="model">rls.dashboard</field>
+        <field name="arch" type="xml">
+            <dashboard>
+                <!-- Place your dashboard content here -->
+            </dashboard>
+        </field>
+    </record>
+</odoo>

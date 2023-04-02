@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Actions for Request Legal Services -->
+    <record id="action_request_legal_services" model="ir.actions.act_window">
+        <field name="name">Request Legal Services</field>
+        <field name="res_model">request.legal.services</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+</odoo>

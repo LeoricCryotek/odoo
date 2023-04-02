@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Email Template for RLS Creation -->
+    <record id="email_template_rls_creation" model="mail.template">
+        <!-- Configure your email template here -->
+    </record>
+
+    <!-- Email Template for RLS Assignment -->
+    <record id="email_template_rls_assignment" model="mail.template">
+        <!-- Configure your email template here -->
+    </record>
+
+    <!-- Email Template for RLS Stage Update -->
+    <record id="email_template_rls_stage_update" model="mail.template">
+        <!-- Configure your email template here -->
+    </record>
+</odoo>

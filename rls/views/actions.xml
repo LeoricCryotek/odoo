@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Dashboard action -->
+        <record id="rls_dashboard_action" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">rls.dashboard</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+
+        <!-- Requests action -->
+        <record id="rls_requests_action" model="ir.actions.act_window">
+            <field name="name">Requests</field>
+            <field name="res_model">request.legal.services</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <!-- Attorney Report action -->
+        <record id="rls_attorney_report_action" model="ir.actions.act_window">
+            <field name="name">By Attorney</field>
+            <field name="res_model">rls.attorney.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Outside Council Report action -->
+        <record id="rls_outside_council_report_action" model="ir.actions.act_window">
+            <field name="name">By Outside Council</field>
+            <field name="res_model">rls.outside.council.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Master Report action -->
+        <record id="rls_master_report_action" model="ir.actions.act_window">
+            <field name="name">Master Report</field>
+            <field name="res_model">rls.master.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Legal Team action -->
+        <record id="rls_legal_team_action" model="ir.actions.act_window">
+            <field name="name">Legal Team</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('department_id.name', '=', 'Legal Services')]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Outside Council action -->
+        <record id="rls_outside_council_action" model="ir.actions.act_window">
+            <field name="name">Outside Council</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('is_council', '=', True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Request Type action -->
+        <record id="rls_request_type_action" model="ir.actions.act_window">
+            <field name="name">Request Type</field>
+            <field name="res_model">rls.request.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Settings action -->
+        <record id="rls_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="res_model">rls.settings</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

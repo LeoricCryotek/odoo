@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- RLS Dashboard view -->
+        <record id="rls_dashboard_view" model="ir.ui.view">
+            <field name="name">rls.dashboard.view</field>
+            <field name="model">request.legal.services</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_dashboard">
+                    <!-- Add your cards and other dashboard elements here -->
+                </kanban>
+            </field>
+        </record>
+
+        <!-- RLS Dashboard action -->
+        <record id="action_rls_dashboard" model="ir.actions.act_window">
+            <field name="name">RLS Dashboard</field>
+            <field name="res_model">request.legal.services</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="rls_dashboard_view"/>
+            <field name="search_view_id" ref="request_legal_services_view_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_my_requests': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No RLS requests found
+                </p>
+                <p>
+                    Create a new RLS request by clicking "Create".
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
