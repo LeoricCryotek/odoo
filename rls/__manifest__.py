@@ -25,12 +25,8 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'data/security_groups.xml',
         'views/menu.xml',
-        'views/actions.xml',
-        'views/requests.xml',
-        'views/rls_dashboard.xml',
-        'views/res_config_settings_views.xml',
+        'actions/actions.xml',
     ],
     'installable': True,
     'application': True,

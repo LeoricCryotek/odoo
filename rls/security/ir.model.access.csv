@@ -1,8 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rls_request_legal_services_all,access_rls_request_legal_services,model_rls_request_legal_services,base.group_user,1,0,0,0
-access_rls_request_legal_services_attorney,access_rls_request_legal_services,model_rls_request_legal_services,rls.group_rls_attorney,1,1,1,1
-access_rls_request_legal_services_admin,access_rls_request_legal_services,model_rls_request_legal_services,rls.group_rls_administrator,1,1,1,1
-access_rls_request_legal_services_manager,access_rls_request_legal_services,model_rls_request_legal_services,rls.group_rls_manager,1,1,1,1
-access_res_partner_rls,access_res_partner,model_res_partner,rls.group_rls_administrator,1,1,1,1
-access_hr_employee_rls,access_hr_employee,model_hr_employee,rls.group_rls_administrator,1,1,1,1
-access_res_users_rls,access_res_users,model_res_users,rls.group_rls_administrator,1,1,1,1
+access_rls_legal_services,Access RLS Legal Services,model_request_legal_services,base.group_user,1,1,1,1
