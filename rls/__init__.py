@@ -3,5 +3,12 @@
 
 from . import models
 from . import actions
+from datetime import datetime, timedelta
 
+
+def _schedule_cron():
+    models.UpdateDaysRemaining()._schedule_cron()
+
+def post_init_hook(cr, registry):
+    _schedule_cron()
 

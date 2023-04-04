@@ -8,14 +8,24 @@
             <form string="Request Legal Services">
                 <sheet>
                     <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
-                    <group>
-                        <field name="name"/>
-                        <field name="nature_of_request"/>
-                        <field name="assigned_attorney_id"/>
-                        <field name="due_date"/>
+                    <group col="1">
+                        <group>
+                            <field name="name"/>
+                            <field name="nature_of_request"/>
+                            <field name="assigned_attorney_id"/>
+                            <field name="due_date" widget="date"/>
 
+                        </group>
+                        <field name="active" invisible="1"/>
                     </group>
-                    <field name="active" invisible="1"/>
+                    <group col="2">
+                        <group>
+                            <field name="days_remaining"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" widget="html"/>
+                    </group>
                 </sheet>
                 <!-- Chatter -->
                 <div class="oe_chatter">
@@ -49,4 +59,19 @@
         </field>
     </record>
 
-</odoo>
+
+    <record id="view_request_legal_services_events" model="ir.ui.view">
+        <field name="name">request.legal.services.event</field>
+        <field name="model">request.legal.services</field>
+        <field name="arch" type="xml">
+            <calendar string="My Events" date_start="start_datetime" date_stop="due_date" mode="month">
+                <field name="name"/>
+                <field name="nature_of_request"/>
+                <field name="assigned_attorney_id"/>
+                <field name="due_date"/>
+                <field name="start_datetime"/>
+            </calendar>
+    </field>
+</record>
+
+        </odoo>

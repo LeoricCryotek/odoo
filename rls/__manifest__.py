@@ -28,6 +28,7 @@
         'views/menu.xml',
         'actions/actions.xml',
         'views/request_legal_services.xml',
+        'views/ir_cron_data.xml',
     ],
     'installable': True,
     'application': True,
