@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 {
     'name': 'Request for Legal Services',
     'version': '1.2',
@@ -12,13 +9,16 @@
     'summary': 'Track request for legal services and their status. ',
     'description': "The best tool around for Legal Service Requests",
     'depends': [
+        'base',
         'mail',
         'calendar',
         'web',
         'crm',
+        'website',
     ],
     'data': [
         'security/ir.model.access.csv',
+        'views/assets.xml',
         'views/menu.xml',
         'views/request_legal_services.xml',
         'views/ir_cron_data.xml',

@@ -1,13 +1,26 @@
 from odoo import http
 from odoo.http import request
 
-class RLSController(http.Controller):
 
-    @http.route('/rls/submit_form', type='http', auth='public', website=True, csrf=False, methods=['POST'])
-    def submit_form(self, **post):
-        # Your custom code to handle form data
-        # e.g., create a new record, send an email, etc.
-        # You can access form data using post.get('field_name')
+class RlsDashboardController(http.Controller):
 
-        # Redirect user to a specific page after form submission
-        return request.redirect('/success_page')
+    @http.route('/rls/data', type='json', auth='user')
+    def rls_dashboard_data(self):
+        # Fetch the data required for the dashboard
+
+        # Example data format (you need to replace this with the actual data from your models)
+        data = {
+            'open_requests': [
+                {'attorney_name': 'Attorney 1', 'open_requests': 5},
+                {'attorney_name': 'Attorney 2', 'open_requests': 7},
+            ],
+            'weekly_requests': [
+                {'day': 'Monday', 'new_requests': 2},
+                {'day': 'Tuesday', 'new_requests': 1},
+                {'day': 'Wednesday', 'new_requests': 0},
+                {'day': 'Thursday', 'new_requests': 3},
+                {'day': 'Friday', 'new_requests': 4},
+            ],
+        }
+
+        return data

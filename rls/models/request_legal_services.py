@@ -22,10 +22,10 @@ class RequestLegalServices(models.Model):
                                          string='Nature of Request', tracking=True)
     assigned_attorney_id = fields.Many2one('res.users', string='Attorney Assigned', domain="[(1, '=', 1)]", tracking=True)
     active = fields.Boolean(default=True)
-    note = fields.Char(string="Description", widget="html", required=True)
+    note = fields.Text(string="Description", widget='html', required=True)
     start_datetime = fields.Datetime(string="Start Date", default=fields.Datetime.now)
     due_date = fields.Date(string='Due Date', required=True, tracking=True, default=lambda self: fields.Date.today() + relativedelta(days=9))
-    days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining', stored=True)
+    days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining')
 
 
     state = fields.Selection([

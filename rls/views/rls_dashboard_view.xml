@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="rls_dashboard_view" model="ir.ui.view">
-            <field name="name">request.legal.services.dashboard</field>
+            <field name="name">request.legal.services.dashboard.view</field>
             <field name="model">request.legal.services</field>
             <field name="arch" type="xml">
                 <form>
