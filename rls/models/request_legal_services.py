@@ -27,6 +27,7 @@ class RequestLegalServices(models.Model):
     due_date = fields.Date(string='Due Date', required=True, tracking=True, default=lambda self: fields.Date.today() + relativedelta(days=9))
     days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining', stored=True)
 
+
     @api.depends('due_date')
     def _compute_days_remaining(self):
         for record in self:
@@ -74,3 +75,5 @@ class UpdateDaysRemaining(models.Model):
             'active': True,
             'code': 'model._update_days_remaining()'
         })
+
+
