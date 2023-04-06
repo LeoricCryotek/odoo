@@ -24,7 +24,7 @@ class RequestLegalServices(models.Model):
     active = fields.Boolean(default=True)
     note = fields.Char(string="Description", widget="html", required=True)
     start_datetime = fields.Datetime(string="Start Date", default=fields.Datetime.now)
-    due_date = fields.Date(string='Due Date', required=True, tracking=True)
+    due_date = fields.Date(string='Due Date', required=True, tracking=True, default=lambda self: fields.Date.today() + relativedelta(days=9))
     days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining', stored=True)
 
     @api.depends('due_date')
@@ -36,7 +36,12 @@ class RequestLegalServices(models.Model):
                 remaining_days = (due_date - today_date).days
                 record.days_remaining = remaining_days + 1
 
-
+    @api.onchange('nature_of_request')
+    def _onchange_nature_of_request(self):
+        if self.nature_of_request == 'contract':
+            self.due_date = fields.Date.to_string(fields.Date.today() + relativedelta(days=29))
+        else:
+            self.due_date = fields.Date.to_string(fields.Date.today() + relativedelta(days=9))
 
 class UpdateDaysRemaining(models.Model):
     _name = 'update.days.remaining'
