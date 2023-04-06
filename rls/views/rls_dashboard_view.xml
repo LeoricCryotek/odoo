@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="rls_dashboard_view" model="ir.ui.view">
+            <field name="name">request.legal.services.dashboard</field>
+            <field name="model">request.legal.services</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <div>
+                                <h3>Open Requests</h3>
+                                <field name="open_requests" widget="graph"/>
+                            </div>
+                            <div>
+                                <h3>Weekly Requests</h3>
+                                <field name="weekly_requests" widget="graph"/>
+                            </div>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

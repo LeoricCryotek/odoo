@@ -14,7 +14,6 @@
                             <field name="nature_of_request"/>
                             <field name="assigned_attorney_id"/>
                             <field name="due_date" widget="date"/>
-
                         </group>
                         <field name="active" invisible="1"/>
                     </group>

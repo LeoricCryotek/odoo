@@ -19,14 +19,37 @@ class RequestLegalServices(models.Model):
                                                     ('resolution', 'Resolution'),
                                                     ('subpoena', 'Subpoena'),
                                                     ('vacation_of_r-o-w', 'Vacation of R-O-W')],
-                                         string='Nature of Request', widget='selection', tracking=True)
-    assigned_attorney_id = fields.Many2one('res.users', string='Attorney Assigned', domain="[(1, '=', 1)]", widget='selection', tracking=True)
+                                         string='Nature of Request', tracking=True)
+    assigned_attorney_id = fields.Many2one('res.users', string='Attorney Assigned', domain="[(1, '=', 1)]", tracking=True)
     active = fields.Boolean(default=True)
     note = fields.Char(string="Description", widget="html", required=True)
     start_datetime = fields.Datetime(string="Start Date", default=fields.Datetime.now)
     due_date = fields.Date(string='Due Date', required=True, tracking=True, default=lambda self: fields.Date.today() + relativedelta(days=9))
     days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining', stored=True)
 
+
+    state = fields.Selection([
+        ('new', 'New'),
+        ('open', 'Open'),
+        ('closed', 'Closed'),
+    ], string='Status', default='new')
+
+    is_open = fields.Boolean(compute='_compute_is_open', string='Is Open', store=True)
+    open_requests = fields.Integer(compute='_compute_open_requests')
+    weekly_requests = fields.Integer(compute='_compute_weekly_requests')
+
+    @api.depends('state')
+    def _compute_open_requests(self):
+        for record in self:
+            record.open_requests = self.search_count([('state', 'in', ['open'])])
+
+    @api.depends('create_date')
+    def _compute_weekly_requests(self):
+        for record in self:
+            week_start = datetime.now().date() - timedelta(days=datetime.now().weekday())
+            week_end = week_start + timedelta(days=6)
+            record.weekly_requests = self.search_count(
+                [('create_date', '>=', week_start), ('create_date', '<=', week_end)])
 
     @api.depends('due_date')
     def _compute_days_remaining(self):
@@ -37,12 +60,27 @@ class RequestLegalServices(models.Model):
                 remaining_days = (due_date - today_date).days
                 record.days_remaining = remaining_days + 1
 
+    @api.depends('state')
+    def _compute_is_open(self):
+        for record in self:
+            record.is_open = record.state == "open"  # Replace "your_status_field" with the field used to track the status of the RLS record
     @api.onchange('nature_of_request')
     def _onchange_nature_of_request(self):
         if self.nature_of_request == 'contract':
             self.due_date = fields.Date.to_string(fields.Date.today() + relativedelta(days=29))
         else:
             self.due_date = fields.Date.to_string(fields.Date.today() + relativedelta(days=9))
+
+    def create_request(self):
+        vals = {
+            'name': self.name,
+            'nature_of_request': self.nature_of_request,
+            'assigned_attorney_id': self.assigned_attorney_id.id,
+            'note': self.note,
+            'start_datetime': datetime.now(),
+            'due_date': self.due_date,
+        }
+        return self.env['request.legal.services'].create(vals)
 
 class UpdateDaysRemaining(models.Model):
     _name = 'update.days.remaining'
