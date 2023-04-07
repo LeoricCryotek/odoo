@@ -1,8 +1,7 @@
 from odoo import http
-from odoo.http import request
 
 
-class RlsDashboardController(http.Controller):
+class RlSDashboardController(http.Controller):
 
     @http.route('/rls/data', type='json', auth='user')
     def rls_dashboard_data(self):

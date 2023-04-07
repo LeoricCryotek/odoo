@@ -18,7 +18,6 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/assets.xml',
         'views/menu.xml',
         'views/request_legal_services.xml',
         'views/ir_cron_data.xml',
@@ -26,6 +25,11 @@
         'views/rls_dashboard_view.xml',
         'actions/actions.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'rls/static/src/js/rls_dashboard_controller.js',
+        ],
+    },
     'installable': True,
     'application': True,
     'auto_install': False
