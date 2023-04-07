@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- Action to open RLS Dashboard -->
-        <record id="action_rls_dashboard" model="ir.actions.act_window">
+        <record id="rls_dashboard_view" model="ir.actions.act_window">
             <field name="name">RLS Dashboard</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">request.legal.services</field>
@@ -20,7 +20,7 @@
         <!-- Dashboard menu -->
         <menuitem id="rls_dashboard_menu"
                   name="Dashboard"
-                  action="action_rls_dashboard"
+                  action="rls_dashboard_view"
                   parent="rls_main_menu"
                   sequence="1"
         />
@@ -62,7 +62,7 @@
                   name="Reports"
                   action="action_rls_reports"
                   parent="rls_main_menu"
-                  sequence="2"
+                  sequence="3"
         />
     </data>
 </odoo>

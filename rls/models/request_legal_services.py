@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 
@@ -34,9 +34,7 @@ class RequestLegalServices(models.Model):
         ('closed', 'Closed'),
     ], string='Status', default='new')
 
-    is_open = fields.Boolean(compute='_compute_is_open', string='Is Open', store=True)
-    open_requests = fields.Integer(compute='_compute_open_requests')
-    weekly_requests = fields.Integer(compute='_compute_weekly_requests')
+    weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
 
     @api.depends('state')
     def _compute_open_requests(self):

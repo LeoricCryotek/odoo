@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_request_legal_services" model="ir.actions.act_window">
+        <field name="name">RLS Dashboard</field>
+        <field name="res_model">request.legal.services</field>
+        <field name="view_mode">tree,form,graph,pivot,calendar</field>
+        <field name="context">{'search_default_this_week': 1}</field>
+    </record>
+
+    <record id="rls_dashboard_graph_view" model="ir.ui.view">
+        <field name="name">rls.dashboard.graph.view</field>
+        <field name="model">request.legal.services</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="create_date" interval="week" />
+                <field name="priority" />
+                <field name="state" />
+                <field name="user_id" />
+                <field name="amount_total" />
+            </graph>
+        </field>
+    </record>
+    <!-- ... -->
+</odoo>

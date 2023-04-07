@@ -19,10 +19,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
+        'views/rls_dashboard_view.xml',
         'views/request_legal_services.xml',
         'views/ir_cron_data.xml',
-        'views/request_legal_services.xml',
-        'views/rls_dashboard_view.xml',
         'actions/actions.xml',
     ],
     'assets': {
