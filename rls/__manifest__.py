@@ -30,6 +30,15 @@
             'rls/static/src/js/rls_dashboard_controller.js',
         ],
     },
+'qweb': [
+    ],
+    'demo': [
+    ],
+    'js': [
+        'static/src/js/gauge_field_widget.js',
+    ],
+    'css': [
+    ],
     'installable': True,
     'application': True,
     'auto_install': False

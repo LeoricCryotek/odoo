@@ -2,17 +2,18 @@
 <odoo>
     <data>
         <!-- Action to open RLS Dashboard -->
-        <record id="rls_dashboard_view" model="ir.actions.act_window">
+        <record id="rls_dashboard_action" model="ir.actions.act_window">
             <field name="name">RLS Dashboard</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">request.legal.services</field>
-            <field name="view_mode">dashboard</field> <!-- Change this line -->
-            <field name="view_id" ref="rls_dashboard_view"/>
+            <field name="view_mode">form</field> <!-- Change this line -->
+            <field name="view_id" ref="rls_dashboard_form_view"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click the Create button to add a new request.
                 </p>
             </field>
+            <field name="target">current</field>
         </record>
 
 
@@ -20,7 +21,7 @@
         <!-- Dashboard menu -->
         <menuitem id="rls_dashboard_menu"
                   name="Dashboard"
-                  action="rls_dashboard_view"
+                  action="rls_dashboard_action"
                   parent="rls_main_menu"
                   sequence="1"
         />

@@ -8,7 +8,7 @@ class RequestLegalServices(models.Model):
     _description = 'Request Legal Services'
     _inherit = ['mail.thread']
 
-    name = fields.Char(string='Request', required=True, copy=False, default='New', tracking=True)
+    name = fields.Char(string='Name', required=True, copy=False, default='New', tracking=True)
     nature_of_request = fields.Selection(selection=[('contract', 'Contract'),
                                                     ('dedication', 'Dedication'),
                                                     ('deed', 'Deed'),
@@ -35,8 +35,14 @@ class RequestLegalServices(models.Model):
         ('closed', 'Closed'),
     ], string='Status', default='new')
 
-    weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
+
+
+#<--computed field values for dashboard -->
     open_requests = fields.Float(string='Open Requests', compute='_compute_weekly_requests')
+    max_open_requests = fields.Integer(string='Max Open Requests', default=100)
+
+    weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
+    max_weekly_requests = fields.Integer(string='Max Weekly Requests', default=100)
 
     @api.depends('state')
     def _compute_open_requests(self):
