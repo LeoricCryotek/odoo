@@ -10,11 +10,11 @@
                         <group>
                             <div>
                                 <h3>Open Requests</h3>
-                                <field name="open_requests" widget="graph"/>
+                                <field name="open_requests" widget="gauge"/>
                             </div>
                             <div>
                                 <h3>Weekly Requests</h3>
-                                <field name="weekly_requests" widget="graph"/>
+                                <field name="weekly_requests" widget="gauge"/>
                             </div>
                         </group>
                     </sheet>

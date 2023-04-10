@@ -23,6 +23,7 @@ class RequestLegalServices(models.Model):
     assigned_attorney_id = fields.Many2one('res.users', string='Attorney Assigned', domain="[(1, '=', 1)]", tracking=True)
     active = fields.Boolean(default=True)
     note = fields.Text(string="Description", widget='html', required=True)
+    description = fields.Text(string="Description")
     start_datetime = fields.Datetime(string="Start Date", default=fields.Datetime.now)
     due_date = fields.Date(string='Due Date', required=True, tracking=True, default=lambda self: fields.Date.today() + relativedelta(days=9))
     days_remaining = fields.Integer(string='Days Remaining', compute='_compute_days_remaining')
@@ -35,19 +36,12 @@ class RequestLegalServices(models.Model):
     ], string='Status', default='new')
 
     weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
+    open_requests = fields.Float(string='Open Requests', compute='_compute_weekly_requests')
 
     @api.depends('state')
     def _compute_open_requests(self):
         for record in self:
             record.open_requests = self.search_count([('state', 'in', ['open'])])
-
-    @api.depends('create_date')
-    def _compute_weekly_requests(self):
-        for record in self:
-            week_start = datetime.now().date() - timedelta(days=datetime.now().weekday())
-            week_end = week_start + timedelta(days=6)
-            record.weekly_requests = self.search_count(
-                [('create_date', '>=', week_start), ('create_date', '<=', week_end)])
 
     @api.depends('due_date')
     def _compute_days_remaining(self):

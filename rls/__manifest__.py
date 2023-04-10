@@ -21,6 +21,7 @@
         'views/menu.xml',
         'views/rls_dashboard_view.xml',
         'views/request_legal_services.xml',
+        'views/rls_templates.xml',
         'views/ir_cron_data.xml',
         'actions/actions.xml',
     ],

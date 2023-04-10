@@ -6,7 +6,7 @@
             <field name="name">RLS Dashboard</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">request.legal.services</field>
-            <field name="view_mode">form</field> <!-- Change this line -->
+            <field name="view_mode">dashboard</field> <!-- Change this line -->
             <field name="view_id" ref="rls_dashboard_view"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
