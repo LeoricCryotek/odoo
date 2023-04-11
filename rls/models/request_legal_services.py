@@ -44,6 +44,15 @@ class RequestLegalServices(models.Model):
     weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
     max_weekly_requests = fields.Integer(string='Max Weekly Requests', default=100)
 
+    total_amount = fields.Float(string='Total Amount', compute='_compute_total_amount')
+
+    @api.depends('total_amount')
+    def _compute_total_amount(self):
+        for record in self:
+            # Calculate the total amount based on your specific requirements.
+            # This is just an example, replace this logic with your own.
+            record.total_amount = record.field1 + record.field2
+
     @api.depends('state')
     def _compute_open_requests(self):
         for record in self:

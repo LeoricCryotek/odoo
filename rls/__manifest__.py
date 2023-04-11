@@ -23,11 +23,11 @@
         'views/request_legal_services.xml',
         'views/rls_templates.xml',
         'views/ir_cron_data.xml',
+        'views/dashboard_renderer_templates.xml',
         'actions/actions.xml',
     ],
     'assets': {
         'web.assets_backend': [
-            'rls/static/src/js/rls_dashboard_controller.js',
         ],
     },
 'qweb': [
@@ -35,7 +35,7 @@
     'demo': [
     ],
     'js': [
-        'static/src/js/gauge_field_widget.js',
+        'static/src/js/gauge_field.js',
     ],
     'css': [
     ],

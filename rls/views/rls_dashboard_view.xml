@@ -10,36 +10,7 @@
                     <sheet>
                         <div class="o_form_view o_form_editable">
                             <t t-component="DashboardRenderer" t-props="{
-                                'mainRecord': state,
-                                'sections': [
-                                    {
-                                        'title': 'Summary',
-                                        'columns': [
-                                            {'size': 6, 'content': [
-                                                {'name': 'total_requests', 'label': 'Total Requests', 'icon': 'fa-clipboard-list'},
-                                                {'name': 'pending_requests', 'label': 'Pending Requests', 'icon': 'fa-hourglass-half'}
-                                            ]},
-                                            {'size': 6, 'content': [
-                                                {'name': 'approved_requests', 'label': 'Approved Requests', 'icon': 'fa-check'},
-                                                {'name': 'rejected_requests', 'label': 'Rejected Requests', 'icon': 'fa-times'}
-                                            ]}
-                                        ]
-                                    },
-                                    {
-                                        'title': 'Total Amount',
-                                        'content': [
-                                            {
-                                                'component': 'gauge_field',
-                                                'props': {
-                                                    'label': 'Total Amount',
-                                                    'valueField': 'total_amount',
-                                                    'maxValueField': 'max_value',
-                                                    'icon': 'fa-dollar-sign'
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
+                                'mainRecord': state
                             }" />
                         </div>
                     </sheet>
