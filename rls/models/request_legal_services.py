@@ -35,29 +35,6 @@ class RequestLegalServices(models.Model):
         ('closed', 'Closed'),
     ], string='Status', default='new')
 
-
-
-#<--computed field values for dashboard -->
-    open_requests = fields.Float(string='Open Requests', compute='_compute_weekly_requests')
-    max_open_requests = fields.Integer(string='Max Open Requests', default=100)
-
-    weekly_requests = fields.Integer(string='Weekly Requests', compute='_compute_weekly_requests')
-    max_weekly_requests = fields.Integer(string='Max Weekly Requests', default=100)
-
-    total_amount = fields.Float(string='Total Amount', compute='_compute_total_amount')
-
-    @api.depends('total_amount')
-    def _compute_total_amount(self):
-        for record in self:
-            # Calculate the total amount based on your specific requirements.
-            # This is just an example, replace this logic with your own.
-            record.total_amount = record.field1 + record.field2
-
-    @api.depends('state')
-    def _compute_open_requests(self):
-        for record in self:
-            record.open_requests = self.search_count([('state', 'in', ['open'])])
-
     @api.depends('due_date')
     def _compute_days_remaining(self):
         for record in self:
@@ -122,3 +99,26 @@ class UpdateDaysRemaining(models.Model):
         })
 
 
+class RequestLegalServicesDashboard(models.Model):
+    _name = 'request.legal.services.dashboard'
+    _description = 'Request Legal Services Dashboard'
+
+    total_requests = fields.Integer(string="Total Requests", compute='_compute_request_counts')
+    open_requests = fields.Integer(string="Open Requests", compute='_compute_request_counts')
+    weekly_requests = fields.Integer(string="Weekly Requests", compute='_compute_request_counts')
+
+    @api.depends('request.legal.services')
+    def _compute_request_counts(self):
+        request_env = self.env['request.legal.services']
+        for record in self:
+            record.total_requests = request_env.search_count([('active', '=', True)])
+            record.open_requests = request_env.search_count([('state', '=', 'open')])
+
+            today = fields.Date.today()
+            week_start = today - timedelta(days=today.weekday())
+            week_end = week_start + timedelta(days=6)
+
+            record.weekly_requests = request_env.search_count([
+                ('create_date', '>=', week_start),
+                ('create_date', '<=', week_end)
+            ])
