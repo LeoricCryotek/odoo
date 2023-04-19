@@ -102,12 +102,13 @@ class UpdateDaysRemaining(models.Model):
 class RequestLegalServicesDashboard(models.Model):
     _name = 'request.legal.services.dashboard'
     _description = 'Request Legal Services Dashboard'
+    _auto = False
 
     total_requests = fields.Integer(string="Total Requests", compute='_compute_request_counts')
     open_requests = fields.Integer(string="Open Requests", compute='_compute_request_counts')
     weekly_requests = fields.Integer(string="Weekly Requests", compute='_compute_request_counts')
 
-    @api.depends('request.legal.services')
+    @api.depends('request_id.state')
     def _compute_request_counts(self):
         request_env = self.env['request.legal.services']
         for record in self:
