@@ -1,3 +1,5 @@
+# clm/__manifest__.py
+
 {
     'name': "CLM Contract Lifecycle Management",
     'version': '1.0',
@@ -9,18 +11,10 @@
     'description': "Contract Lifecycle Management (CLM) Module for odoo",
     'application': True,
     'depends': [
-        'base_setup',
-        'sales_team',
-        'mail',
-        'calendar',
-        'resource',
-        'utm',
-        'web_tour',
-        'contacts',
-        'digest',
-        'phone_validation',
+        'documents'
     ],
     'data': [
+        'views/document_cancellation_terms_view.xml',
     ],
     'demo': [
     ],

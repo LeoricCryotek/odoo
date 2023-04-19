@@ -1,0 +1,20 @@
+<!-- clm/views/document_cancellation_terms_view.xml -->
+
+<odoo>
+    <record id="view_document_form_cancellation_terms" model="ir.ui.view">
+        <field name="name">document.form.cancellation.terms</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="document.view_document_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='metadata']" position="after">
+                <page string="Cancellation Terms">
+                    <group>
+                        <field name="written_notice_30" options="{'horizontal': True}" nolabel="1"/>
+                        <label for="written_notice_30" string="30 Days Written Notice" title="The party wishing to cancel the contract must provide a written notice to the other party at least 30 days before the intended termination date."/>
+                        <!-- Add the remaining fields with their respective tooltips -->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
