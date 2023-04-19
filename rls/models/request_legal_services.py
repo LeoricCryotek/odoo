@@ -108,7 +108,6 @@ class RequestLegalServicesDashboard(models.Model):
     open_requests = fields.Integer(string="Open Requests", compute='_compute_request_counts')
     weekly_requests = fields.Integer(string="Weekly Requests", compute='_compute_request_counts')
 
-    @api.depends('request_id.state')
     def _compute_request_counts(self):
         request_env = self.env['request.legal.services']
         for record in self:
