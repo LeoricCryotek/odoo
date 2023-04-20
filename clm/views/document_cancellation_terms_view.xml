@@ -1,19 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!-- clm/views/document_cancellation_terms_view.xml -->
 
 <odoo>
-    <record id="view_document_form_cancellation_terms" model="ir.ui.view">
-        <field name="name">document.form.cancellation.terms</field>
+    <record id="view_document_cancellation_terms_form" model="ir.ui.view">
+        <field name="name">documents.document.form.inherit.cancellation</field>
         <field name="model">documents.document</field>
-        <field name="inherit_id" ref="document.view_document_form"/>
+        <field name="inherit_id" ref="documents.document_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//notebook/page[@name='metadata']" position="after">
-                <page string="Cancellation Terms">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Terms">
                     <group>
-                        <field name="written_notice_30" options="{'horizontal': True}" nolabel="1"/>
-                        <label for="written_notice_30" string="30 Days Written Notice" title="The party wishing to cancel the contract must provide a written notice to the other party at least 30 days before the intended termination date."/>
-                        <!-- Add the remaining fields with their respective tooltips -->
+                        <field name="term"/>
+                    </group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="termination_date"/>
+                        <field name="days_left"/>
                     </group>
                 </page>
+                    <page string="Cancellation Terms">
+                    <group>
+                        <group>
+                            <field name="written_notice_30" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="written_notice_30" string="30 Days Written Notice"/>
+
+                            <field name="written_notice_60" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="written_notice_60" string="60 Days Written Notice"/>
+
+                            <field name="early_termination_fee" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="early_termination_fee" string="Early Termination Fee"/>
+                        </group>
+                        <group>
+                            <field name="termination_for_convenience" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_for_convenience" string="Termination for Convenience"/>
+
+                            <field name="termination_for_cause" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_for_cause" string="Termination for Cause"/>
+
+                            <field name="termination_upon_expiration" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_upon_expiration" string="Termination upon Expiration"/>
+                        </group>
+                        <group>
+                            <field name="termination_upon_bankruptcy" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_upon_bankruptcy" string="Termination upon Bankruptcy or Insolvency"/>
+
+                            <field name="termination_for_non_payment" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_for_non_payment" string="Termination for Non-payment"/>
+
+                            <field name="termination_upon_change_of_control" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_upon_change_of_control" string="Termination upon Change of Control"/>
+                        </group>
+                        <group>
+                            <field name="termination_for_force_majeure" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_for_force_majeure" string="Termination for Force Majeure"/>
+
+                            <field name="mutual_termination" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="mutual_termination" string="Mutual Termination"/>
+                        </group>
+                    </group>
+                </page>
+                </notebook>
             </xpath>
         </field>
     </record>
