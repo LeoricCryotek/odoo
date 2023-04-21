@@ -5,9 +5,10 @@ from dateutil.relativedelta import relativedelta
 
 
 class DocumentCancellationTerms(models.Model):
+
     _inherit = ['documents.document']
 
-    cancellation_notice_enabled = fields.Boolean(string="Cancellation Notice")
+    cancellation_notice_enabled = fields.Boolean(string="Cancellation Notice Enabled")
     cancellation_notice = fields.Selection([
         ('30', '30 Days Written Notice'),
         ('60', '60 Days Written Notice'),

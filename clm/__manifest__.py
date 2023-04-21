@@ -8,7 +8,6 @@
     'license': 'LGPL-3',
     'summary': 'Manage contracts from initiation to expiration or termination',
     'description': "Contract Lifecycle Management (CLM) Module for odoo",
-    'application': True,
     'depends': ['base',
                 'documents',
     ],
@@ -20,5 +19,7 @@
         # Add your other XML files here
         'data/scheduled_action.xml',
     ],
+    'application': True,
     'installable': True,
+    'auto_install': False
 }

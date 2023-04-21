@@ -2,9 +2,9 @@
 <!-- clm/views/form_menu_view.xml -->
 
 <odoo>
-    <record id="action_documents_document" model="ir.actions.act_window">
-        <field name="name">Documents</field>
-        <field name="res_model">documents.document</field>
-        <field name="view_mode">kanban,list,form</field>
-    </record>
+    <data>
+        <record id="documents.action_documents_document" model="ir.actions.act_window">
+            <field name="view_mode">kanban,form</field>
+        </record>
+    </data>
 </odoo>

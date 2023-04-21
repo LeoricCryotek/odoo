@@ -30,7 +30,7 @@
         'web.assets_backend': [
         ],
     },
-'qweb': [
+    'qweb': [
     ],
     'demo': [
     ],
