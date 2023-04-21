@@ -1,29 +1,33 @@
 # clm/models/document_cancellation_terms.py
 
 from odoo import api, fields, models
+from odoo.addons.mail.models import mail_thread
 from dateutil.relativedelta import relativedelta
 
 
 class DocumentCancellationTerms(models.Model):
-
     _inherit = ['documents.document']
 
-    cancellation_notice_enabled = fields.Boolean(string="Cancellation Notice Enabled")
+
+    is_contract = fields.Boolean(string="Is Contract", tracking=True)
+    cancellation_notice_enabled = fields.Boolean(string="Cancellation Notice Enabled", tracking=True)
     cancellation_notice = fields.Selection([
         ('30', '30 Days Written Notice'),
         ('60', '60 Days Written Notice'),
-    ], string='Cancellation Notice')
-    early_termination_fee = fields.Boolean(string="Early Termination Fee")
-    early_termination_fee_amount = fields.Char(string="Early Termination Fee Amount")
-    termination_for_cause = fields.Boolean(string="Termination for Cause")
-    termination_upon_expiration = fields.Boolean(string="Termination upon Expiration")
-    termination_for_non_payment = fields.Boolean(string="Termination for Non-payment")
-    start_date = fields.Date(string='Start Date')
-    termination_date = fields.Date(string='Termination Date', store=True)
+    ], string='Cancellation Notice', tracking=True)
+    early_termination_fee = fields.Boolean(string="Early Termination Fee", tracking=True)
+    early_termination_fee_amount = fields.Char(string="Early Termination Fee Amount", tracking=True)
+    termination_for_cause = fields.Boolean(string="Termination for Cause", tracking=True)
+    termination_upon_expiration = fields.Boolean(string="Termination upon Expiration", tracking=True)
+    termination_for_non_payment = fields.Boolean(string="Termination for Non-payment", tracking=True)
+    start_date = fields.Date(string='Start Date', tracking=True)
+    termination_date = fields.Date(string='Termination Date', compute='_compute_termination_date', tracking=True, store=True)
     days_left_to_termination = fields.Integer(string='Days Left to Termination',
-                                              compute='_compute_days_left_to_termination', store=True)
+                                              compute='_compute_days_left_to_termination', store=True, readonly=True)
     days_left_to_cancel = fields.Integer(string='Days Left to Cancel', compute='_compute_days_left_to_cancel',
-                                         store=True)
+                                         store=True, readonly=True)
+    cancellation_deadline = fields.Date(string='Cancellation Deadline', compute='_compute_cancellation_deadline',
+                                        readonly=True)
     term = fields.Selection([
         ('12', '12 Month'),
         ('24', '24 Month'),
@@ -31,13 +35,12 @@ class DocumentCancellationTerms(models.Model):
         ('48', '48 Month'),
         ('60', '60 Month'),
         ('other', 'Other'),
-    ], string='Term')
-    auto_renew = fields.Boolean(string='Auto Renew')
-    cancellation_deadline = fields.Date(string='Cancellation Deadline', compute='_compute_cancellation_deadline')
+    ], string='Term', tracking=True)
+    auto_renew = fields.Boolean(string='Auto Renew', tracking=True)
 
     # ...
-    @api.onchange('start_date', 'term')
-    def _onchange_termination_date(self):
+    @api.depends('start_date', 'term')
+    def _compute_termination_date(self):
         for record in self:
             if record.start_date and record.term:
                 if record.term != 'other':
@@ -45,6 +48,9 @@ class DocumentCancellationTerms(models.Model):
                     record.termination_date = record.start_date + relativedelta(months=months)
                 else:
                     record.termination_date = False
+            elif not record.term:
+                record.start_date = False
+                record.termination_date = False
 
     def _set_termination_date_readonly(self):
         for record in self:

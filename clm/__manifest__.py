@@ -14,9 +14,7 @@
     'data': [
         'views/document_cancellation_terms_view.xml',
         'views/form_menu_view.xml',
-    ],
-    'data': [
-        # Add your other XML files here
+        'views/clm_report_filters.xml',
         'data/scheduled_action.xml',
     ],
     'application': True,

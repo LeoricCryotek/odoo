@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- clm/views/clm_report_filters.xml -->
+
+<odoo>
+    <data noupdate="1">
+        <!-- Filter for 'Within 30 Days to Cancel' -->
+        <record id="documents_document_filter_30_days" model="ir.filters">
+            <field name="name">Within 30 Days to Cancel</field>
+            <field name="model_id">documents.document</field>
+            <field name="domain">[('days_left_to_cancel', '&lt;=', 30), ('is_contract', '=', True), ('term', '!=', False)]</field>
+            <field name="user_id" eval="False"/>
+            <field name="is_default" eval="False"/>
+        </record>
+
+        <!-- Filter for 'Within 60 Days to Cancel' -->
+        <record id="documents_document_filter_60_days" model="ir.filters">
+            <field name="name">Within 60 Days to Cancel</field>
+            <field name="model_id">documents.document</field>
+            <field name="domain">[('days_left_to_cancel', '&lt;=', 60), ('is_contract', '=', True), ('term', '!=', False)]</field>
+            <field name="user_id" eval="False"/>
+            <field name="is_default" eval="False"/>
+        </record>
+    </data>
+</odoo>

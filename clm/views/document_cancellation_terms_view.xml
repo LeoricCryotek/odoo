@@ -8,7 +8,13 @@
         <field name="inherit_id" ref="documents.document_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="inside">
-                <notebook>
+                <div class="oe_button_box" name="button_box">
+                    <div class="oe_statinfo">
+                        <label for="is_contract" string="Is Contract"/>
+                        <field name="is_contract" widget="boolean_toggle"/>
+                    </div>
+                </div>
+                <notebook attrs="{'invisible': [('is_contract', '=', False)]}">
                 <page string="Terms">
                     <group>
                     <group>
