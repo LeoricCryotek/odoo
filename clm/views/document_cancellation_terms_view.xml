@@ -19,48 +19,31 @@
                     <group>
                         <field name="start_date"/>
                         <field name="termination_date" attrs="{'readonly': [('term', '!=', 'other')]}"/>
-                        <field name="days_left"/>
+                        <field name="days_left_to_termination"/>
+                        <field name="days_left_to_cancel"/>
                     </group>
                     </group>
                 </page>
                     <page string="Cancellation Terms">
                     <group>
                         <group>
-                            <field name="written_notice_30" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="written_notice_30" string="30 Days Written Notice"/>
+                            <field name="cancellation_notice_enabled"/>
+                            <field name="cancellation_notice" attrs="{'invisible': [('cancellation_notice_enabled', '=', False)]}"/>
 
-                            <field name="written_notice_60" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="written_notice_60" string="60 Days Written Notice"/>
+                            <field name="early_termination_fee"/>
+                            <field name="early_termination_fee_amount" attrs="{'invisible': [('early_termination_fee', '=', False)]}"/>
 
-                            <field name="early_termination_fee" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="early_termination_fee" string="Early Termination Fee"/>
                         </group>
                         <group>
-                            <field name="termination_for_convenience" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="termination_for_convenience" string="Termination for Convenience"/>
+                            <field name="termination_for_non_payment" options="{'horizontal': True}" nolabel="1"/>
+                            <label for="termination_for_non_payment" string="Termination for Non-payment"/>
 
                             <field name="termination_for_cause" options="{'horizontal': True}" nolabel="1"/>
                             <label for="termination_for_cause" string="Termination for Cause"/>
 
                             <field name="termination_upon_expiration" options="{'horizontal': True}" nolabel="1"/>
                             <label for="termination_upon_expiration" string="Termination upon Expiration"/>
-                        </group>
-                        <group>
-                            <field name="termination_upon_bankruptcy" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="termination_upon_bankruptcy" string="Termination upon Bankruptcy or Insolvency"/>
 
-                            <field name="termination_for_non_payment" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="termination_for_non_payment" string="Termination for Non-payment"/>
-
-                            <field name="termination_upon_change_of_control" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="termination_upon_change_of_control" string="Termination upon Change of Control"/>
-                        </group>
-                        <group>
-                            <field name="termination_for_force_majeure" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="termination_for_force_majeure" string="Termination for Force Majeure"/>
-
-                            <field name="mutual_termination" options="{'horizontal': True}" nolabel="1"/>
-                            <label for="mutual_termination" string="Mutual Termination"/>
                         </group>
                     </group>
                 </page>

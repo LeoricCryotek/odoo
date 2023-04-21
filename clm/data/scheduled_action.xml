@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- clm/data/scheduled_actions.xml -->
+
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_update_days_left" model="ir.cron">
+            <field name="name">Update Days Left</field>
+            <field name="model_id" ref="documents.model_documents_document"/>
+            <field name="state">code</field>
+            <field name="code">model.update_days_left()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>
