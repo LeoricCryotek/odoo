@@ -9,14 +9,18 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="inside">
                 <notebook>
-                    <page string="Terms">
+                <page string="Terms">
+                    <group>
                     <group>
                         <field name="term"/>
+                        <field name="auto_renew"/>
+                         <field name="cancellation_deadline"/>
                     </group>
                     <group>
                         <field name="start_date"/>
-                        <field name="termination_date"/>
+                        <field name="termination_date" attrs="{'readonly': [('term', '!=', 'other')]}"/>
                         <field name="days_left"/>
+                    </group>
                     </group>
                 </page>
                     <page string="Cancellation Terms">
